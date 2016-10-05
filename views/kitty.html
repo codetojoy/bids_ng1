@@ -1,0 +1,12 @@
+<div class="container-fluid">
+    <div class="row voffset2">
+        <div class="col-md-3">
+            <strong>Kitty</strong>
+        </div> 
+        <div class="col-md-6 col-md-offset-2">
+            <ng-repeat ng-repeat="card in data.kitty.hand">
+                <button class="btn-lg btn-warning">{{ (data.isTransparent ? card : ".") }}</button>
+            </ng-repeat>
+        </div>
+    </div>
+</div>

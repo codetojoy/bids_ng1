@@ -1,0 +1,21 @@
+<div ng-repeat="player in data.players" >
+    <div class="container-fluid">
+        <div class="row voffset2">
+            <div class="col-md-3">
+                <strong>{{ player.name }}</strong>
+                <div> Score: {{ player.score }} </div>
+                <div ng-if="data.isTransparent && (! player.isHuman)">
+                    Strategy: {{ player.strategy }}
+                </div>
+            </div>
+            <div class="col-md-6 col-md-offset-2">
+                    <div ng-if="player.isHuman">
+                        <div ng-include="'views/humanHand.html'"></div>
+                    </div>
+                    <div ng-if="! player.isHuman">
+                        <div ng-include="'views/botHand.html'"></div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
