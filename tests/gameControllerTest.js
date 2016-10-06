@@ -1,6 +1,6 @@
 describe("Controller Test", function () {
  
-    var mockScope, controller;
+    var mockScope, gameController, mainController;
     var dealerService;
     var MIN, MAX;
  
@@ -8,7 +8,10 @@ describe("Controller Test", function () {
  
     beforeEach(angular.mock.inject(function ($controller, $rootScope, DealerService, StrategyService) { 
         mockScope = $rootScope.$new();
-        contoller = $controller("bidsCtrl", {
+        mainController = $controller("mainController", {
+            $scope: mockScope
+        });
+        gameController = $controller("gameController", {
             $scope: mockScope
         });
         dealerService = DealerService;
@@ -19,7 +22,7 @@ describe("Controller Test", function () {
     // -------- tests
 
     it("has # cards [canary]", function () {
-        expect(mockScope.numCards).toEqual(30);
+        expect(mockScope.data.numCards).toEqual(30);
     });
 
     it("can find player by name", function () {
@@ -78,5 +81,4 @@ describe("Controller Test", function () {
         var result = mockScope.getBid(prizeCard, player);
         expect(result).toEqual(10);
     });
-
 });

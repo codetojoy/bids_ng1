@@ -18,9 +18,8 @@ module.exports = function(config) {
       'tests/js/angular-mocks.js',
       'tests/js/angular-route.js',
       'app.js',
-      'controllers/bids.js',
-      'services/DealerService.js',
-      'services/StrategyService.js',
+      'controllers/*.js',
+      'services/*.js',
       'tests/*.js'
     ],
 
