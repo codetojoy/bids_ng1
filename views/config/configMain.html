@@ -1,0 +1,12 @@
+<div class="panel panel-default row" ng-controller="configController">
+    <div class="col-xs-3">
+        <div ng-include="'views/config/buttonBar.html'"></div>
+    </div>
+    <div class="col-xs-8">
+        <div class="well">
+            <div ng-repeat="player in data.players">
+                <strong>{{ player.name }}</strong>
+            </div>
+        </div>
+    </div>
+</div>

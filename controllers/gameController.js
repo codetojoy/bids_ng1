@@ -1,38 +1,17 @@
 angular.module("bids")
-.constant("numCards", 30)
-.constant("numPlayers", 4)
-.constant("humanName", "You")
-.controller("bidsCtrl", function ($scope, $filter, DealerService, StrategyService, numCards, numPlayers, humanName) {
+.controller("gameController", function ($scope, $filter, $location, DealerService, StrategyService) {
 
-    $scope.numCards = numCards;
-    $scope.numPlayers = numPlayers;
-    $scope.humanName = humanName;
-    // TODO: error validation
-    $scope.numCardsInHand = numCards / (numPlayers + 1);
-    
     var strategyService = StrategyService;
-    var MAX = strategyService.MAX;
-    var MIN = strategyService.MIN;
-
     var dealerService = DealerService;
  
-    $scope.data = {
-        players: [
-            {name: humanName, hand: [], score: 0, isHuman: true, strategy: "" },
-            {name: "Beethoven", hand: [], score: 0, isHuman: false, strategy: MIN },
-            {name: "Chopin", hand: [], score: 0, isHuman: false, strategy: MAX },
-            {name: "Mozart", hand: [], score: 0, isHuman: false, strategy: MIN }
-        ],
-        kitty: {hand: []},
-        prizeCard: 0,
-        isTransparent: false,
-        statusMessage: "Let's play"
-    };
+    $scope.data.kitty = {hand: []};
+    $scope.data.prizeCard = 0;
+    $scope.data.statusMessage = "Press 'New Game' to play";
 
     $scope.deal = function () {
-        var deck = dealerService.createDeck($scope.numCards);
+        var deck = dealerService.createDeck($scope.data.numCards);
         var shuffledDeck = dealerService.shuffle(deck);
-        var hands = dealerService.dealHands(shuffledDeck, $scope.numCardsInHand);
+        var hands = dealerService.dealHands(shuffledDeck, $scope.data.numCardsInHand);
 
         $scope.data.kitty.hand = hands[0];
         $scope.assignPrizeCard();
@@ -54,7 +33,7 @@ angular.module("bids")
     }
 
     $scope.playRound = function (humanBid) {
-        var humanPlayer = $scope.findPlayerByName($scope.humanName, $scope.data.players);
+        var humanPlayer = $scope.findPlayerByName($scope.data.humanName, $scope.data.players);
         $scope.removeCardFromHand(humanBid, humanPlayer.hand);
         var prizeCard = $scope.data.prizeCard;
 
@@ -135,5 +114,8 @@ angular.module("bids")
         $scope.data.prizeCard = $scope.data.kitty.hand.pop();
     }
 
+    $scope.goNext = function (hash) {
+        $location.path(hash);
+    }
 })
 ;
