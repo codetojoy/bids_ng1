@@ -1,4 +1,4 @@
-describe("Controller Test", function () {
+describe("Game Controller Test", function () {
  
     var mockScope, gameController, mainController;
     var dealerService;
