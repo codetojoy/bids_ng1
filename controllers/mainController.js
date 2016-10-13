@@ -1,21 +1,24 @@
 angular.module("bids")
-.constant("numCards", 30)
-.constant("numPlayers", 4)
+.constant("defaultNumCards", 30)
+.constant("defaultNumPlayers", 4)
 .constant("humanName", "You")
-.controller("mainController", function ($scope, numCards, numPlayers, humanName, StrategyService) {
+.controller("mainController", function ($scope, $location, defaultNumCards, defaultNumPlayers, humanName, StrategyService) {
 
-    var strategyService = StrategyService;
-    var MAX = strategyService.MAX;
-    var MIN = strategyService.MIN;
-    var NEAREST = strategyService.NEAREST;
+    var MAX = StrategyService.MAX;
+    var MIN = StrategyService.MIN;
+    var NEAREST = StrategyService.NEAREST;
 
     $scope.data = {
-        numCards: numCards,
-        numPlayers: numPlayers,
+        MAX: StrategyService.MAX,
+        MIN: StrategyService.MIN,
+        NEAREST: StrategyService.NEAREST,
+
+        numCards: defaultNumCards,
+        numPlayers: defaultNumPlayers,
         humanName: humanName,
 
         // TODO: error validation
-        numCardsInHand: (numCards / (numPlayers + 1)),
+        numCardsInHand: (defaultNumCards / (defaultNumPlayers + 1)),
 
         players: [
             {name: humanName, hand: [], score: 0, isHuman: true, strategy: "" },
@@ -25,5 +28,15 @@ angular.module("bids")
         ],
         isTransparent: false
     };
-})
-;
+
+    $scope.changeNumCards = function () {
+        console.log("TRACER change num cards");
+        var numCards = $scope.data.numCards;
+        var numPlayers = $scope.data.numPlayers;
+        $scope.data.numCardsInHand = (numCards / (numPlayers + 1));
+    }
+
+    $scope.goNext = function (hash) {
+        $location.path(hash);
+    }
+});

@@ -1,6 +1,5 @@
 angular.module("bids")
-.controller("gameController", function ($scope, $filter, $location, DealerService, StrategyService) {
-
+.controller("gameController", function ($scope, $filter, DealerService, StrategyService) {
     var strategyService = StrategyService;
     var dealerService = DealerService;
  
@@ -10,6 +9,7 @@ angular.module("bids")
 
     $scope.deal = function () {
         var deck = dealerService.createDeck($scope.data.numCards);
+        console.log("TRACER 09-OCT deal() :: numCards " + $scope.data.numCards);
         var shuffledDeck = dealerService.shuffle(deck);
         var hands = dealerService.dealHands(shuffledDeck, $scope.data.numCardsInHand);
 
@@ -79,6 +79,7 @@ angular.module("bids")
         if (isLastRound) {
             var gameWinner = $scope.findPlayerByHighScore($scope.data.players);
             $scope.data.statusMessage += " ... and " + gameWinner.name + " wins the game!"; 
+            $scope.data.prizeCard = 0;
         } else {
             $scope.assignPrizeCard();
         }
@@ -112,10 +113,6 @@ angular.module("bids")
 
     $scope.assignPrizeCard = function () {
         $scope.data.prizeCard = $scope.data.kitty.hand.pop();
-    }
-
-    $scope.goNext = function (hash) {
-        $location.path(hash);
     }
 })
 ;
