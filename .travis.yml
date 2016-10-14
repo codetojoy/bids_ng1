@@ -1,6 +1,7 @@
 language: node_js
 node_js:
   - "6"
-  - "node"
+before-script:
+  - 'npm install -g karma'
 notifications:
   email: false
