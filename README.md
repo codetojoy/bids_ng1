@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/codetojoy/bids_ng1.svg?branch=master)](https://travis-ci.org/codetojoy/bids_ng1)
+
 # Bids for Angular 1.x
 
 * simple sandbox app for Angular 1.x
