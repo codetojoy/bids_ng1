@@ -1,7 +1,8 @@
 {
 
     "devDependencies": {
-      "karma": "~1.1.1"
+      "karma": "~1.1.1",
+      "jasmine-core": "~2.4.1"
     },
 
     "scripts": {
