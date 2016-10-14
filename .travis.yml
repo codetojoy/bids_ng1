@@ -2,6 +2,7 @@ language: node_js
 node_js:
   - "6"
 before-script:
-  - 'npm install -g karma karma-jasmine'
+  - 'npm install -g karma karma-cli karma-jasmine --save-dev'
+  - 'npm install'
 notifications:
   email: false
