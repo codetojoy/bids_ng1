@@ -49,6 +49,12 @@ module.exports = function(config) {
     // enable / disable watching file and executing tests whenever any file changes
     autoWatch: true,
 
+    customLaunchers: {
+        Chrome_travis_ci: {
+            base: 'Chrome',
+            flags: ['--no-sandbox']
+        }
+    },
 
     // Start these browsers, currently available:
     // - Chrome
@@ -58,8 +64,7 @@ module.exports = function(config) {
     // - Safari (only Mac; has to be installed with `npm install karma-safari-launcher`)
     // - PhantomJS
     // - IE (only Windows; has to be installed with `npm install karma-ie-launcher`)
-    browsers: ['Firefox'],
-
+    browsers: [((process.env.TRAVIS) ? 'Chrome_travis_ci' : 'Chrome')],
 
     // If browser does not capture in given timeout [ms], kill it
     captureTimeout: 60000,
