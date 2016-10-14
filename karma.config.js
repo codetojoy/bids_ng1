@@ -50,8 +50,8 @@ module.exports = function(config) {
     autoWatch: true,
 
     customLaunchers: {
-        Chrome_travis_ci: {
-            base: 'Chrome',
+        Custom_travis_ci: {
+            base: 'PhantomJS',
             flags: ['--no-sandbox']
         }
     },
@@ -64,7 +64,7 @@ module.exports = function(config) {
     // - Safari (only Mac; has to be installed with `npm install karma-safari-launcher`)
     // - PhantomJS
     // - IE (only Windows; has to be installed with `npm install karma-ie-launcher`)
-    browsers: [((process.env.TRAVIS) ? 'Chrome_travis_ci' : 'Chrome')],
+    browsers: [((process.env.TRAVIS) ? 'Custom_travis_ci' : 'Chrome')],
 
     // If browser does not capture in given timeout [ms], kill it
     captureTimeout: 60000,
