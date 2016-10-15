@@ -51,7 +51,7 @@ module.exports = function(config) {
 
     customLaunchers: {
         Custom_travis_ci: {
-            base: 'PhantomJS'
+            base: 'Firefox'
         }
     },
 
