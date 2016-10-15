@@ -2,7 +2,7 @@
 // Generated on Sun Dec 01 2013 16:50:31 GMT+0000 (GMT Standard Time)
 
 module.exports = function(config) {
-  config.set({
+  var cfg = {
 
     // base path, that will be used to resolve files and exclude
     basePath: '',
@@ -64,7 +64,7 @@ module.exports = function(config) {
     // - Safari (only Mac; has to be installed with `npm install karma-safari-launcher`)
     // - PhantomJS
     // - IE (only Windows; has to be installed with `npm install karma-ie-launcher`)
-    browsers: [((process.env.TRAVIS) ? 'Custom_travis_ci' : 'Chrome')],
+    browsers: ['Chrome'],
 
     // If browser does not capture in given timeout [ms], kill it
     captureTimeout: 60000,
@@ -73,5 +73,11 @@ module.exports = function(config) {
     // Continuous Integration mode
     // if true, it capture browsers, run tests and exit
     singleRun: false
-  });
+  };
+
+  if (process.env.TRAVIS) {
+    cfg.browsers = ['Custom_travis_ci']
+  }
+
+  config.set(cfg);
 };
