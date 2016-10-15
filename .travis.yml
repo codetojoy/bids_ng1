@@ -1,6 +1,8 @@
 language: node_js
 node_js:
   - "6"
+addons:  
+  firefox: latest
 before-script:
   - 'npm install -g bower karma karma-cli karma-firefox-launcher karma-jasmine --save-dev'
   - 'npm install'
