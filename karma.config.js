@@ -50,7 +50,7 @@ module.exports = function(config) {
     autoWatch: true,
 
     customLaunchers: {
-        Custom_travis_ci: {
+        Chrome_travis_ci: {
           base: 'Chrome',
           flags: ['--no-sandbox']
         }
@@ -76,7 +76,7 @@ module.exports = function(config) {
   };
 
   if (process.env.TRAVIS) {
-    cfg.browsers = ['Custom_travis_ci']
+    cfg.browsers = ['Chrome_travis_ci']
   }
 
   config.set(cfg);
