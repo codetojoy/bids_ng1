@@ -2,10 +2,11 @@ language: node_js
 node_js:
   - "6"
 before-script:
+  - 'npm install -g bower karma karma-cli karma-firefox-launcher karma-jasmine --save-dev'
+  - 'npm install'
+  - 'bower install'
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
   - sleep 3 # give xvfb some time to start
-  - 'npm install -g karma karma-cli karma-firefox-launcher karma-jasmine --save-dev'
-  - 'npm install'
 notifications:
   email: false
