@@ -31,8 +31,7 @@ angular.module("bids")
 
     $scope.changeNumCards = function () {
         console.log("TRACER change num cards");
-        const numCards = $scope.data.numCards;
-        const numPlayers = $scope.data.numPlayers;
+        const {numCards, numPlayers} = $scope.data;
         $scope.data.numCardsInHand = (numCards / (numPlayers + 1));
     }
 
