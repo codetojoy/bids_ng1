@@ -1,11 +1,4 @@
 
-/*
-const _name = Symbol('name');
-const _hand = Symbol('hand');
-const _score = Symbol('score');
-const _isHuman = Symbol('isHuman');
-const _strategy = Symbol('strategy');
-*/
     
 class Player {
     constructor(name, isHuman, strategy, hand = [], score = 0) {
