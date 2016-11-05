@@ -38,11 +38,10 @@ angular.module("bids")
         const prizeCard = $scope.data.prizeCard;
 
         const resultInfo = $scope.goAroundTableForBids($scope.data.players, humanBid, humanPlayer);
-        const highestBid = resultInfo.highestBid;
-        const leader = resultInfo.leader;
+        const {highestBid, leader} = resultInfo;
 
         leader.score += prizeCard;
-        $scope.data.statusMessage = leader.name + " won prize (" + prizeCard + ") with bid: " + highestBid;
+        $scope.data.statusMessage = `${leader.name} won prize (${prizeCard}) with bid: ${highestBid}`;
 
         $scope.updateTable();
     }
@@ -78,7 +77,7 @@ angular.module("bids")
 
         if (isLastRound) {
             const gameWinner = $scope.findPlayerByHighScore($scope.data.players);
-            $scope.data.statusMessage += " ... and " + gameWinner.name + " wins the game!"; 
+            $scope.data.statusMessage += ` ... and ${gameWinner.name} wins the game!`; 
             $scope.data.prizeCard = 0;
         } else {
             $scope.assignPrizeCard();
