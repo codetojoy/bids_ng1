@@ -1,8 +1,8 @@
 describe("Game Controller Test", function () {
  
-    var mockScope, gameController, mainController;
-    var dealerService;
-    var MIN, MAX;
+    let mockScope, gameController, mainController;
+    let dealerService;
+    let MIN, MAX;
  
     beforeEach(angular.mock.module("bids"));
  
@@ -26,37 +26,37 @@ describe("Game Controller Test", function () {
     });
 
     it("can find player by name", function () {
-        var p1 = {name: "You", hand: [1,8,4], strategy: MAX, score: 0, isHuman: true};
-        var p2 = {name: "Van Halen", hand: [9,6,2], strategy: MAX, score: 0, isHuman: false};
-        var p3 = {name: "Rhoads", hand: [3,7,10], strategy: MAX, score: 0, isHuman: false};
+        const p1 = new Player("You", true, MAX, [1,8,4]);
+        const p2 = new Player("Van Halen", false, MAX, [9,6,2]);
+        const p3 = new Player("Rhoads", false, MAX, [3,7,10]);
 
-        var players = [p1,p2,p3];
-        var targetName = "Rhoads";
+        const players = [p1,p2,p3];
+        const targetName = "Rhoads";
 
         // test
-        var result = mockScope.findPlayerByName(targetName, players);
+        const result = mockScope.findPlayerByName(targetName, players);
 
         expect(result.name).toEqual(targetName);
     });
 
     it("can find player by high score", function () {
-        var p1 = {name: "You", hand: [1,8,4], strategy: MAX, score: 0, isHuman: true};
-        var p2 = {name: "Van Halen", hand: [9,6,2], strategy: MAX, score: 50, isHuman: false};
-        var p3 = {name: "Rhoads", hand: [3,7,10], strategy: MAX, score: 20, isHuman: false};
+        const p1 = new Player("You", true, MAX, [1,8,4], 0);
+        const p2 = new Player("Van Halen", false, MAX, [9,6,2], 50);
+        const p3 = new Player("Rhoads", false, MAX, [3,7,10], 20);
 
-        var players = [p1,p2,p3];
+        const players = [p1,p2,p3];
 
         // test
-        var result = mockScope.findPlayerByHighScore(players);
+        const result = mockScope.findPlayerByHighScore(players);
 
         expect(result.name).toEqual("Van Halen");
     });
 
     it("can play round", function () {
-        var humanBid = 1;
-        var p1 = {name: "You", hand: [1,8,4], strategy: MAX, score: 0, isHuman: true};
-        var p2 = {name: "Xyz", hand: [9,6,2], strategy: MAX, score: 0, isHuman: false};
-        var p3 = {name: "Ijk", hand: [3,7,10], strategy: MAX, score: 0, isHuman: false};
+        const humanBid = 1;
+        const p1 = new Player("You", true, MAX, [1,8,4]);
+        const p2 = new Player("Van Halen", false, MAX, [9,6,2]);
+        const p3 = new Player("Rhoads", false, MAX, [3,7,10]);
 
         mockScope.data.players = [p1,p2,p3];
         mockScope.data.prizeCard = 5;
@@ -71,14 +71,13 @@ describe("Game Controller Test", function () {
         expect(mockScope.data.players[0].hand).toEqual([8,4]);
         expect(mockScope.data.players[1].hand).toEqual([6,2]);
         expect(mockScope.data.players[2].hand).toEqual([3,7]);
-
     });
 
     it("can get bid", function () {
-        var prizeCard = 6;
-        var hand = [8,10,5,4,2];
-        var player = {hand: hand, strategy: MAX};
-        var result = mockScope.getBid(prizeCard, player);
+        const prizeCard = 6;
+        const hand = [8,10,5,4,2];
+        let player = new Player("Ginger", false, MAX, hand);
+        const result = mockScope.getBid(prizeCard, player);
         expect(result).toEqual(10);
     });
 });

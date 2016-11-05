@@ -21,10 +21,16 @@ angular.module("bids")
         numCardsInHand: (defaultNumCards / (defaultNumPlayers + 1)),
 
         players: [
+            new Player(humanName, true, ""),
+            new Player("Liszt", false, MIN),
+            new Player("Brahms", false, MAX),
+            new Player("Debussy", false, NEAREST)
+            /*
             {name: humanName, hand: [], score: 0, isHuman: true, strategy: "" },
             {name: "Beethoven", hand: [], score: 0, isHuman: false, strategy: MIN },
             {name: "Chopin", hand: [], score: 0, isHuman: false, strategy: MAX },
             {name: "Mozart", hand: [], score: 0, isHuman: false, strategy: NEAREST }
+            */
         ],
         isTransparent: false
     };

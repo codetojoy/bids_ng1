@@ -1,7 +1,7 @@
 describe("Config Controller Test", function () {
  
-    var mockScope, configController, mainController;
-    var strategyService;
+    let mockScope, configController, mainController;
+    let strategyService;
  
     beforeEach(angular.mock.module("bids"));
  
@@ -19,46 +19,46 @@ describe("Config Controller Test", function () {
     // -------- tests
 
     it("can validate numCards config", function () {
-        var MAX = "dummy";
-        var p1 = {name: "You", hand: [1,8,4], strategy: MAX, score: 0, isHuman: true};
-        var p2 = {name: "Van Halen", hand: [9,6,2], strategy: MAX, score: 0, isHuman: false};
-        var p3 = {name: "Rhoads", hand: [3,7,10], strategy: MAX, score: 0, isHuman: false};
+        const MAX = "dummy";
+        let p1 = new Player("You", true, MAX, [1,8,4]);
+        let p2 = new Player("Van Halen", false, MAX, [9,6,2]);
+        let p3 = new Player("Rhoads", false, MAX, [3,7,10]);
 
         mockScope.data.players = [p1,p2,p3];
-        var numCards = 12;
+        const numCards = 12;
     
         // test
-        var result = mockScope.applyValidation(numCards);
+        const result = mockScope.applyValidation(numCards);
 
         expect(result).toEqual(true);
     });
 
     it("can detect invalid numCards (too low)", function () {
-        var MAX = "dummy";
-        var p1 = {name: "You", hand: [1,8,4], strategy: MAX, score: 0, isHuman: true};
-        var p2 = {name: "Van Halen", hand: [9,6,2], strategy: MAX, score: 0, isHuman: false};
-        var p3 = {name: "Rhoads", hand: [3,7,10], strategy: MAX, score: 0, isHuman: false};
+        const MAX = "dummy";
+        let p1 = new Player("You", true, MAX, [1,8,4]);
+        let p2 = new Player("Van Halen", false, MAX, [9,6,2]);
+        let p3 = new Player("Rhoads", false, MAX, [3,7,10]);
 
         mockScope.data.players = [p1,p2,p3];
-        var numCards = 2;
+        const numCards = 2;
     
         // test
-        var result = mockScope.applyValidation(numCards);
+        const result = mockScope.applyValidation(numCards);
 
         expect(result).toEqual(false);
     });
 
     it("can detect invalid numCards (uneven)", function () {
-        var MAX = "dummy";
-        var p1 = {name: "You", hand: [1,8,4], strategy: MAX, score: 0, isHuman: true};
-        var p2 = {name: "Van Halen", hand: [9,6,2], strategy: MAX, score: 0, isHuman: false};
-        var p3 = {name: "Rhoads", hand: [3,7,10], strategy: MAX, score: 0, isHuman: false};
+        const MAX = "dummy";
+        let p1 = new Player("You", true, MAX, [1,8,4]);
+        let p2 = new Player("Van Halen", false, MAX, [9,6,2]);
+        let p3 = new Player("Rhoads", false, MAX, [3,7,10]);
 
         mockScope.data.players = [p1,p2,p3];
-        var numCards = 15;
+        const numCards = 15;
     
         // test
-        var result = mockScope.applyValidation(numCards);
+        const result = mockScope.applyValidation(numCards);
 
         expect(result).toEqual(false);
     });
