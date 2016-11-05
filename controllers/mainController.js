@@ -4,9 +4,9 @@ angular.module("bids")
 .constant("humanName", "You")
 .controller("mainController", function ($scope, $location, defaultNumCards, defaultNumPlayers, humanName, StrategyService) {
 
-    var MAX = StrategyService.MAX;
-    var MIN = StrategyService.MIN;
-    var NEAREST = StrategyService.NEAREST;
+    const MAX = StrategyService.MAX;
+    const MIN = StrategyService.MIN;
+    const NEAREST = StrategyService.NEAREST;
 
     $scope.data = {
         MAX: StrategyService.MAX,
@@ -31,8 +31,8 @@ angular.module("bids")
 
     $scope.changeNumCards = function () {
         console.log("TRACER change num cards");
-        var numCards = $scope.data.numCards;
-        var numPlayers = $scope.data.numPlayers;
+        const numCards = $scope.data.numCards;
+        const numPlayers = $scope.data.numPlayers;
         $scope.data.numCardsInHand = (numCards / (numPlayers + 1));
     }
 

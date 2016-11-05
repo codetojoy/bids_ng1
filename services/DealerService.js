@@ -1,9 +1,9 @@
 angular.module('bids')
 .service('DealerService', function () {
     this.dealHands = function (array,  numCardsInHand) {
-        var hands = [];
+        let hands = [];
 
-        var i,j,temparray;
+        let i,j,temparray;
 
         for (i=0,j=array.length; i<j; i+= numCardsInHand) {
             temparray = array.slice(i,i+ numCardsInHand);
@@ -15,7 +15,7 @@ angular.module('bids')
 
     // http://stackoverflow.com/a/2450976/12704
     this.shuffle = function (array) {
-        var currentIndex = array.length, temporaryValue, randomIndex;
+        let currentIndex = array.length, temporaryValue, randomIndex;
 
         // While there remain elements to shuffle...
         while (0 !== currentIndex) {
@@ -33,9 +33,9 @@ angular.module('bids')
     }
 
     this.createDeck = function (numCards) {
-        var deck = [];
+        let deck = [];
 
-        for (var i = 1; i <= numCards; i++) {
+        for (let i = 1; i <= numCards; i++) {
             deck.push(i);
         }
 
