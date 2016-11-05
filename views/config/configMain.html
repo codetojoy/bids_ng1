@@ -10,8 +10,9 @@
                              ng-model="data.numCards"
                              ng-change="changeNumCards()"
                              validatenumcards></input>
-            <div class="error" ng-show="showValidation"> {{getError(myForm.numCards.$error)}} </div>
-            # cards per hand: {{ data.numCardsPerHand }}
+            <div class="configerror" ng-show="showValidation"> {{getError(myForm.numCards.$error)}} </div>
+            <br/>
+            # cards per hand: {{ data.numCardsInHand }}
         </form>
     </div>
 </div>
