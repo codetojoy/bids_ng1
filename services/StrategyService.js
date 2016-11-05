@@ -12,19 +12,19 @@ angular.module('bids')
     this.LARGE_VALUE = LARGE_VALUE;
 
     this.maxStrategy = function (prizeCard, hand) {
-        var result = Math.max.apply(Math, hand);
+        const result = Math.max.apply(Math, hand);
         return result;
     }
 
     this.minStrategy = function (prizeCard, hand) {
-        var result = Math.min.apply(Math, hand);
+        const result = Math.min.apply(Math, hand);
         return result;
     }
 
     var evalNearest = function (prevInfo, thisCard, prizeCard) {
-        var resultInfo = prevInfo;
+        let resultInfo = prevInfo;
         
-        var thisDistance = Math.abs(thisCard - prizeCard);
+        const thisDistance = Math.abs(thisCard - prizeCard);
         if (thisDistance < prevInfo.distance) {
             resultInfo = {distance: thisDistance, nearestCard: thisCard};
         }
@@ -33,7 +33,7 @@ angular.module('bids')
     }
 
     this.nearestStrategy = function (prizeCard, hand) {
-        var result = hand.reduce((prevInfo, card) => 
+        const result = hand.reduce((prevInfo, card) => 
                         evalNearest(prevInfo, card, prizeCard), 
                         {distance: LARGE_VALUE})
                         .nearestCard;
