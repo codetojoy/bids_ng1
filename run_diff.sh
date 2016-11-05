@@ -14,6 +14,8 @@ doDiff controllers/configController.js $BIDS_MASTER/controllers
 doDiff controllers/gameController.js $BIDS_MASTER/controllers
 doDiff controllers/mainController.js $BIDS_MASTER/controllers
 
+doDiff models/player.js $BIDS_MASTER/models
+
 doDiff services/DealerService.js $BIDS_MASTER/services
 doDiff services/StrategyService.js $BIDS_MASTER/services
 
